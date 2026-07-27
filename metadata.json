@@ -1,0 +1,6 @@
+{
+  "name": "Mastery Academy",
+  "description": "Premier e-commerce & tech learning platform offering courses on Amazon FBA Wholesale, Shopify Online Stores, Web Development, and AI Chatbots & Agents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
