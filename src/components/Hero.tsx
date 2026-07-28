@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles, ShieldCheck, MessageCircle, Users, Award, Star, Z
 import { Language } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 import { WHATSAPP_NUMBER, DISPLAY_WHATSAPP_NUMBER } from '../data/courses';
+import heroBannerImg from '../assets/images/hero_banner_1785072721337.jpg';
 
 interface HeroProps {
   language: Language;
@@ -21,7 +22,7 @@ export const Hero: React.FC<HeroProps> = ({ language, onExploreCourses }) => {
   return (
     <section id="hero" className="relative bg-slate-950 text-white overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-800">
       {/* Background Hero Banner Image with Dark Gradient Overlay */}
-      <div className="absolute inset-0 z-0 opacity-20 bg-cover bg-center pointer-events-none" style={{ backgroundImage: "url('/src/assets/images/hero_banner_1785072721337.jpg')" }} />
+      <div className="absolute inset-0 z-0 opacity-20 bg-cover bg-center pointer-events-none" style={{ backgroundImage: `url(${heroBannerImg})` }} />
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/90 to-slate-950 z-0 pointer-events-none" />
 
       {/* Decorative Glow Elements */}

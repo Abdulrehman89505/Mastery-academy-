@@ -61,11 +61,6 @@ export const Footer: React.FC<FooterProps> = ({ language, onNavigateSection }) =
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigateSection('reviews')} className="hover:text-emerald-600 transition-colors">
-                  {t.navReviews}
-                </button>
-              </li>
-              <li>
                 <button onClick={() => onNavigateSection('faq')} className="hover:text-emerald-600 transition-colors">
                   {t.navFaq}
                 </button>

@@ -7,7 +7,6 @@ import { Hero } from './components/Hero';
 import { CourseGrid } from './components/CourseGrid';
 import { CourseModal } from './components/CourseModal';
 import { WhyUs } from './components/WhyUs';
-import { Testimonials } from './components/Testimonials';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { QRCodeSection } from './components/QRCodeSection';
@@ -68,9 +67,6 @@ export default function App() {
 
         {/* Why Choose Mastery Academy Features */}
         <WhyUs language={language} />
-
-        {/* Student Testimonials & Success Stories */}
-        <Testimonials language={language} />
 
         {/* FAQ Accordion Section */}
         <FaqSection language={language} />

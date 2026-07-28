@@ -73,13 +73,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             {t.navFeatures}
           </button>
           <button
-            id="nav-link-reviews"
-            onClick={() => handleLinkClick('reviews')}
-            className="hover:text-cyan-400 transition-colors"
-          >
-            {t.navReviews}
-          </button>
-          <button
             id="nav-link-faq"
             onClick={() => handleLinkClick('faq')}
             className="hover:text-cyan-400 transition-colors"
@@ -238,12 +231,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="text-left py-1 hover:text-cyan-400"
             >
               {t.navFeatures}
-            </button>
-            <button
-              onClick={() => handleLinkClick('reviews')}
-              className="text-left py-1 hover:text-cyan-400"
-            >
-              {t.navReviews}
             </button>
             <button
               onClick={() => handleLinkClick('faq')}

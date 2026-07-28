@@ -1,4 +1,7 @@
 import { Course, CurrencyRate, Currency, Language } from '../types';
+import amazonFbaImg from '../assets/images/amazon_fba_course_1785072739833.jpg';
+import shopifyImg from '../assets/images/shopify_course_1785072756242.jpg';
+import webdevAiImg from '../assets/images/webdev_ai_course_1785072777171.jpg';
 
 export const WHATSAPP_NUMBER = '923378204856';
 export const DISPLAY_WHATSAPP_NUMBER = '+92 3378204856';
@@ -53,7 +56,7 @@ export const COURSES: Course[] = [
     },
     promoPricePKR: 2000,
     originalPricePKR: 4000,
-    image: '/src/assets/images/amazon_fba_course_1785072739833.jpg',
+    image: amazonFbaImg,
     badge: {
       en: '50% OFF - BESTSELLER',
       ur: '50% OFF - ZABARDAST',
@@ -136,7 +139,7 @@ export const COURSES: Course[] = [
     },
     promoPricePKR: 1700,
     originalPricePKR: 3400,
-    image: '/src/assets/images/shopify_course_1785072756242.jpg',
+    image: shopifyImg,
     badge: {
       en: '50% OFF - POPULAR',
       ur: '50% OFF - HOT COURSE',
@@ -219,7 +222,7 @@ export const COURSES: Course[] = [
     },
     promoPricePKR: 1500,
     originalPricePKR: 3000,
-    image: '/src/assets/images/webdev_ai_course_1785072777171.jpg',
+    image: webdevAiImg,
     badge: {
       en: '50% OFF - HIGH DEMAND',
       ur: '50% OFF - TOP FUTURE SKILL',

@@ -37,6 +37,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           alt={course.title[language]}
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (!target.dataset.fallback) {
+              target.dataset.fallback = '1';
+              target.src = `/images/${course.id}.jpg`;
+            }
+          }}
         />
 
         {/* 50% OFF Promotional Badge Overlay */}
@@ -66,7 +73,6 @@ export const CourseCard: React.FC<CourseCardProps> = ({
             <div className="flex items-center gap-1 text-amber-500 font-bold">
               <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
               <span>{course.rating.toFixed(1)}</span>
-              <span className="text-slate-400 font-normal">({course.reviewsCount})</span>
             </div>
             <div className="flex items-center gap-1 text-slate-500">
               <Clock className="w-3.5 h-3.5 text-emerald-600" />

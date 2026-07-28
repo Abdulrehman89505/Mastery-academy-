@@ -56,7 +56,7 @@ export const CourseModal: React.FC<CourseModalProps> = ({
           <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500 pt-1">
             <div className="flex items-center gap-1 text-amber-500 font-bold">
               <Star className="w-4 h-4 fill-amber-400" />
-              <span>{course.rating} ({course.reviewsCount} reviews)</span>
+              <span>{course.rating} / 5.0 Rating</span>
             </div>
             <div className="flex items-center gap-1 text-slate-600">
               <Clock className="w-4 h-4 text-emerald-600" />
