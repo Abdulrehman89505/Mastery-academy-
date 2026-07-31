@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language, Currency, Course } from './types';
 import { COURSES } from './data/courses';
 import { PromoBanner } from './components/PromoBanner';
@@ -12,6 +12,8 @@ import { ContactSection } from './components/ContactSection';
 import { QRCodeSection } from './components/QRCodeSection';
 import { Chatbot } from './components/Chatbot';
 import { Footer } from './components/Footer';
+import { SpinWheelModal } from './components/SpinWheelModal';
+import { Sparkles } from 'lucide-react';
 
 export default function App() {
   // Default Language is English as specified
@@ -21,6 +23,35 @@ export default function App() {
 
   // Modals state
   const [selectedCourseDetails, setSelectedCourseDetails] = useState<Course | null>(null);
+  const [isSpinModalOpen, setIsSpinModalOpen] = useState<boolean>(false);
+  const [wonDiscount, setWonDiscount] = useState<number | null>(null);
+
+  // Auto-pop Spin Wheel Modal ONCE for new visitors after 1.5s
+  useEffect(() => {
+    const savedDiscount = localStorage.getItem('mastery_spin_discount');
+    if (savedDiscount) {
+      setWonDiscount(parseInt(savedDiscount, 10));
+    }
+
+    const hasSeenModal = localStorage.getItem('mastery_spin_modal_shown');
+    if (!savedDiscount && !hasSeenModal) {
+      const timer = setTimeout(() => {
+        setIsSpinModalOpen(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const handleCloseSpinModal = () => {
+    setIsSpinModalOpen(false);
+    localStorage.setItem('mastery_spin_modal_shown', 'true');
+  };
+
+  const handleSpinWin = (discountPercent: number) => {
+    setWonDiscount(discountPercent);
+    localStorage.setItem('mastery_spin_discount', discountPercent.toString());
+    localStorage.setItem('mastery_spin_modal_shown', 'true');
+  };
 
   // Smooth scroll helper
   const handleNavigateSection = (sectionId: string) => {
@@ -78,6 +109,26 @@ export default function App() {
         <QRCodeSection language={language} />
       </main>
 
+      {/* Floating Lucky Spin Wheel Trigger Launcher Button */}
+      <button
+        id="spin-wheel-floating-btn"
+        onClick={() => setIsSpinModalOpen(true)}
+        className="fixed bottom-6 left-6 z-40 bg-gradient-to-r from-amber-500 via-emerald-600 to-cyan-500 hover:from-amber-400 hover:to-cyan-400 text-slate-950 font-black text-xs px-4 py-3 rounded-full shadow-2xl flex items-center gap-2 transition-all hover:scale-105 active:scale-95 border-2 border-amber-300/80 group cursor-pointer"
+        aria-label="Open Lucky Spin Wheel"
+      >
+        <Sparkles className="w-4 h-4 text-slate-950 group-hover:rotate-12 transition-transform" />
+        <span>🎰 Spin & Win Extra Discount</span>
+        {wonDiscount ? (
+          <span className="bg-slate-950 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-400/50">
+            +{wonDiscount}% WON
+          </span>
+        ) : (
+          <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-1.5 py-0.5 rounded-full animate-pulse">
+            NEW
+          </span>
+        )}
+      </button>
+
       {/* Floating Interactive FAQ Chatbot Widget */}
       <Chatbot language={language} />
 
@@ -97,6 +148,15 @@ export default function App() {
         />
       )}
 
+      {/* Lucky Spin Wheel Modal */}
+      <SpinWheelModal
+        language={language}
+        isOpen={isSpinModalOpen}
+        onClose={handleCloseSpinModal}
+        onSpinWin={handleSpinWin}
+      />
+
     </div>
   );
 }
+
